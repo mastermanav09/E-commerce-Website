@@ -5,7 +5,7 @@ It has all the neccessary features that a shopping website should contain, From 
 
 --Build Flow--
 
-Signing Up first - One of the best features of this website is that it can interact(send emails) to you on your real email-ID. It uses sendgrid API for that, and the user can receive the email in just couple of seconds.
+Signing Up first - One of the best features of this website is that it can interact(send emails) to you on your real email-ID. It uses sendgrid API, nodemailer, nodemailer-sendgrid-transport package for that, and the user can receive the email in just couple of seconds.
 For Example : when you first time signup on website it will send email containing message "Signed Up successfully."
 Or if you want to reset your password, you can enter your real emailID and then you will receive a message containing the link for resetting the password.
 
