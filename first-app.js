@@ -129,7 +129,7 @@ mongoose
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
-  .then((result) => {
+  .then(() => {
     console.log("Connected");
 
     app.listen(process.env.PORT || 3000);
