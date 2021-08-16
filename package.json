@@ -4,7 +4,7 @@
   "description": "It is my first node app",
   "main": "first-app.js",
   "engines": {
-    "node": "14.15.3"
+    "node": "14.17.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

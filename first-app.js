@@ -121,7 +121,7 @@ app.get("/500", errorController.errorHandler500);
 app.use("/", errorController.errorHandler404);
 
 app.use((error, req, res, next) => {
-  res.render("500", { docTitle: "500 error", ergit ror: error });
+  res.render("500", { docTitle: "500 error", error: error });
 });
 
 mongoose
