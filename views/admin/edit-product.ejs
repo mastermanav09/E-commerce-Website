@@ -1,0 +1,51 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/product.css" />
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+  <body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+      <% if (errorMessage) { %>
+        <div class="user_msg error_msg">
+            <%= errorMessage %>
+        </div>
+      <% } %>
+      <form class="product-form" action="/admin/<%if(editProdActiveMode){%>edit-product<%}else{%>product<%}%>" method="POST" enctype="multipart/form-data">
+        <div class="form-control">
+          <label for="title">Name of Product</label>
+          <input type="text" name="title" id="title" autofocus <% if (editProdActiveMode) { %> value="<%= product.title %>" <% } else {%> value="<%= oldInput.title %>"  <% } %>  />
+        </div>
+        <!-- <div class="form-control">
+          <label for="imageURL">Image URL</label>
+          <input type="text" name="imageURL" id="imageURL" <% if (editProdActiveMode) { %> value="<%= product.imageURL %>"  <% } else {%> value="<%= oldInput.imageURL %>"  <% } %> />
+        </div> -->
+
+        <div class="form-control">
+          <label for="image">Image</label>
+          <input type="file" name="image" id="image"/>
+        </div>
+
+        <div class="form-control">
+          <label for="title">Price</label>
+          <input type="number" name="price" id="price" step="0.01" <% if (editProdActiveMode) { %> value="<%= product.price %>"  <% } else { %> value="<%= oldInput.price %>"  <% } %>/>
+        </div>
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" ><%if(editProdActiveMode){%><%= product.description %><% } else {%><%= oldInput.description %><% } %></textarea>
+        </div>
+
+        <% if (editProdActiveMode) { %>
+          <input type="hidden" value="<%= product._id %>" name="productId">
+        <% } %>
+
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit"> <% if (!editProdActiveMode) {%> Add Product <% } else { %> Update Product <% } %>  </button>
+      </form>
+    </main>
+
+  <script src="/js/admin.js"></script>
+  <script src="/js/navToggle.js"></script>
+  </body>
+</html>

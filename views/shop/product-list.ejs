@@ -1,0 +1,42 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <%- include('../includes/navigation.ejs') %>
+
+  <main>
+    <% if (prods.length > 0) { %>
+    <div class="products_title"><span>List of all the products</span></div>
+    <div class="my_Product-list">
+      <div class="row rows-cols-lg-5 myProducts">
+      <% for (let product of prods) { %>
+        <div class="m-auto">
+          <div class="card" style="max-width: 17rem;">
+            <img src="/<%= product.imageURL %>" class="card-img-top" alt="No Image">
+            <div class="card-body">
+              <p class="card-title"><%= product.title %></p>
+              <p class="card-text"><%= product.description %></p>
+              <h5 class="product_price"> Price : ₹<%= product.price %></h5>
+              <div class="card_actions">
+                <a href="/products/<%= product._id %>" class="bttn">Details</a>
+
+                <% if (isAuthenticated) {%>
+                  <%- include('../includes/add-to-cart.ejs',{product:product}) %>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div><% } %>
+      </div>
+    </div>
+
+    <%- include('../includes/pagination.ejs'),{currentPage:currentPage,nextPage:nextPage,previousPage:previousPage,lastPage:lastPage,hasNextPage:hasNextPage,hasPreviousPage:hasPreviousPage,path:path} %>
+
+    <% } else { %>
+    <div class="noProducts-title"><span>No Products</span></div>
+    <% } %>
+  </main>
+  <script src="/js/admin.js"></script>
+  <script src="/js/navToggle.js"></script>
+</body>
+</html>

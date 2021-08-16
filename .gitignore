@@ -1,0 +1,6 @@
+node_modules
+Procfile
+server.cert
+server.key
+.env
+.vscode

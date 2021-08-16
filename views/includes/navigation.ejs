@@ -1,0 +1,58 @@
+<header class="main-header">
+
+
+  <span class="navbar-toggler-icon" aria-expanded="false">
+    <div></div>
+    <div></div>
+    <div></div>
+  </span>
+
+  <nav class="main-header__nav">
+    <ul class="main-header__item-list">
+
+      <li class="main-header__item"><a  <% if (path == '/') {  %>  class="active"  <% } %>  href="/">Shop</a></li>
+
+    <% if (isAuthenticated) { %>
+
+        <li class="main-header__item"><a  <% if (path == '/cart') {  %>  class="active"  <% } %>  href="/cart">Cart</a></li>
+
+        <li class="main-header__item"><a  <% if (path == '/admin/adminProducts-list') {  %>  class="active"  <% } %>  href="/admin/adminProducts-list">Admin Products</a></li>
+
+        <li class="main-header__item"><a  <% if (path == '/admin/add-product') {  %>  class="active"  <% } %>  href="/admin/add-product">Add Product</a></li>
+
+        <li class="main-header__item"><a  <% if (path == '/orders') {  %>  class="active"  <% } %>  href="/orders">Orders</a></li>
+
+    <% } %>
+
+      <li class="main-header__item"><a  <% if (path == '/products') {  %>
+      class="active"  <% } %>  href="/products">Products</a></li>
+
+    </ul>
+  </nav>
+
+  <% if (!isAuthenticated) { %>
+  <div class="auth_block">
+    <div class ="loginList">
+          <a  <% if (path == '/login') { %>  class="active"  <% } %> href="/login">Login</a>
+    </div>
+
+    <div class ="signupList">
+      <a  <% if (path == '/signup') { %>  class="active"  <% } %> href="/signup">Signup</a>
+    </div>
+
+  </div>
+
+  <% } else { %>
+
+  <div <% if (isAuthenticated)  { %>   <% } %> class="logout_div"  >
+    <form action="/logout" method="POST">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button class="logoutBtn" type="submit">Logout</button>
+    </form>
+  </div>
+
+  <% } %>
+
+</header>
+
+

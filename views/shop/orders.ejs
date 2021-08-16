@@ -1,0 +1,40 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <%- include('../includes/navigation.ejs') %>
+<main>
+  <% if (orders.length > 0) { %>
+
+    <ul style="list-style-type: none;">
+    <% for (let order of orders) { %>
+
+        <div style="margin: 1rem 0;text-align: center;">
+          <h3>Order ID : <%= order._id %> </h3>
+          <a href="/orders/<%= order._id %>" style="text-decoration: none;font-size: 1.4rem;">Download Invoice</a>
+        </div>
+
+        <% for (let product of order.products) {%>
+
+          <li style="margin:2rem 0 2rem;">
+            <div>
+              <img src="<%= product.productData.imageURL %> " alt="Can't loat image" width="200" height="200" >
+              <h2>Title : <%= product.productData.title %></h2>
+              <h6>Decription : <%= product.productData.description %></h6>
+              <h4>Price : ₹<%= product.productData.price %></h4>
+              <h5>Quantity : <%= product.quantity %></h5>
+            </div>
+           </li>
+
+    <% } } %>
+    </ul>
+    <% } else {%>
+      <div class="noOrders-title"><span>No Orders</span></div>
+      <% } %>
+</main>
+
+<script src="/js/admin.js"></script>
+<script src="/js/navToggle.js"></script>
+
+</body>
+</html>

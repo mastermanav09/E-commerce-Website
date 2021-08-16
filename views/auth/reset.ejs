@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css" />
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+  <body>
+
+    <%- include('../includes/navigation.ejs') %>
+
+    <div><a class="backBtn" href="/">Back</a></div>
+    <main>
+        <% if (errorMessage) { %>
+            <div class="user_msg error_msg">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+        <div class="loginBox">
+            <div class="loginFormText">
+                <p>Login Form</p>
+            </div>
+            <div class="loginFormDiv">
+                <form class="login-form" action="/reset" method="POST">
+
+                    <div class="form-cntrl">
+                        <label for="email">E-mail : </label>
+                        <input type="email" name="email" id="email" autofocus />
+                    </div>
+
+
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <div class="login_div" style="text-align: center;"><button type="submit" class="login_btn">Reset Password</button></div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="/js/admin.js"></script>
+  <script src="/js/navToggle.js"></script>
+  </body>
+</html>
