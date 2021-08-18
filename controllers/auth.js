@@ -216,7 +216,7 @@ exports.postReset = (req, res, next) => {
           to: req.body.email,
           from: "node.shopmail@gmail.com",
           subject: "Password Reset",
-          html: `<h3>You requested a password reset.</h3><p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to set a new password.</p>`,
+          html: `<h3>You requested a password reset.</h3><p>Click this <a href="/reset/${token}">link</a> to set a new password.</p>`,
         });
       })
       .catch((error) => {
