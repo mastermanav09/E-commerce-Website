@@ -12,7 +12,9 @@
   color: darkgreen;
 }
 
-.loginBox {
+.loginBox,
+.resetPwdBox,
+.signupBox {
   display: flex;
   flex-direction: column;
   border: 2px solid grey;
@@ -51,7 +53,8 @@
 }
 
 .loginFormText,
-.signupFormText {
+.signupFormText.backBtn,
+.resetPwdFormText {
   font-size: 1.5rem;
   background-color: #157977;
   color: white;
@@ -59,12 +62,18 @@
 }
 
 .loginFormText p,
-.signupFormText p {
+.signupFormText p,
+.resetPwdFormText p {
   margin: 0.5rem 0;
 }
 
+.signupFormText {
+  font-size: 1.45rem;
+}
+
 .login_div,
-.signup_div {
+.signup_div,
+.resetPwd_div {
   text-align: center;
 }
 
@@ -89,8 +98,15 @@
   color: white;
 }
 
+.signup_div button {
+  background-color: white;
+  color: #03413f;
+  font-weight: 600;
+}
+
 .login_btn,
-.signup_btn {
+.signup_btn,
+.resetPwd_btn {
   margin-top: 0.6rem;
   border: 0;
   padding: 0.4rem 1.1rem;
@@ -104,7 +120,7 @@
 }
 
 .frgt_pass {
-  margin: 1.4rem auto 1rem;
+  margin: 0.5rem auto 1rem;
 }
 
 .frgt_pass a {
@@ -112,19 +128,7 @@
   text-decoration: none;
 }
 
-.signupBox,
-.resetPwdBox {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid grey;
-  display: flex;
-  width: 65%;
-  margin: auto;
-  box-shadow: 2px 2px 15px 1px grey;
-  border-radius: 6px;
-}
-
-.resetPwdFormText {
+.signupBox {
   background-color: #157977;
   color: white;
   text-align: center;

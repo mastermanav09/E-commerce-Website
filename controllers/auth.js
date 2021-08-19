@@ -181,6 +181,13 @@ exports.getReset = (req, res, next) => {
     message = message[0];
   } else {
     message = null;
+    message = req.flash("reseterror");
+
+    if (message.length > 0) {
+      message = message[0];
+    } else {
+      message = null;
+    }
   }
 
   res.render("auth/reset", {
@@ -216,7 +223,7 @@ exports.postReset = (req, res, next) => {
           to: req.body.email,
           from: "node.shopmail@gmail.com",
           subject: "Password Reset",
-          html: `<h3>You requested a password reset.</h3><p>Click this <a href="/reset/${token}">link</a> to set a new password.</p>`,
+          html: `<h3>You requested a password reset.</h3><p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to set a new password.</p>`,
         });
       })
       .catch((error) => {
@@ -253,6 +260,14 @@ exports.postNewPassword = (req, res, next) => {
   const passwordToken = req.body.passwordToken;
   const userId = req.body.userId;
   let resetUser;
+
+  let temp = newPassword;
+  if (temp.trim().length < 8) {
+    req.flash("reseterror", "Password should be minimum of 8 characters.");
+    const error = new Error("Password should be minimum of 8 characters.");
+    error.statusCode = 404;
+    throw error;
+  }
 
   User.findOne({
     resetToken: passwordToken,
