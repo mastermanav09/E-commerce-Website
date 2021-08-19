@@ -219,6 +219,8 @@ exports.postReset = (req, res, next) => {
       .then((result) => {
         req.flash("successReset", "A link has been sent to your email-id");
         res.redirect("/login");
+      })
+      .then(() => {
         transporter.sendMail({
           to: req.body.email,
           from: "node.shopmail@gmail.com",
